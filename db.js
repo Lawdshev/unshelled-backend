@@ -18,7 +18,7 @@ const restartServer = () => {
 
 async function init(){
     const uri = `mongodb+srv://${userName}:${password}@cluster0.rhppjn7.mongodb.net/?retryWrites=true&w=majority`;
-    const client = new MongoClient(uri);
+    const client = new MongoClient(uri, { useUnifiedTopology: true}, { useNewUrlParser: true }, { connectTimeoutMS: 30000 }, { keepAlive: 1});
     try {
         await client.connect()
     } catch (error) {
